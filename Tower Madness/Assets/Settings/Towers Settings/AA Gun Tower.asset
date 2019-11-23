@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AA Gun Tower
   m_EditorClassIdentifier: 
   Price: 100
-  Range: 0
-  ShootIntervals: 0
-  Damage: 0
+  Range: 3.5
+  ShootIntervals: 0.3
+  Damage: 100
+  weaponParticleSystem: {fileID: 0}
+  hittingTargetParticleSystem: {fileID: 0}

@@ -6,5 +6,7 @@ public class TowerScriptableObject : ScriptableObject
    public int Price;
    public float Range;
    public float ShootIntervals;
-   public float Damage;
+   public int Damage;
+   public ParticleSystem weaponParticleSystem;
+   public ParticleSystem hittingTargetParticleSystem;
 }
