@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Rockets Tower
   m_EditorClassIdentifier: 
   Price: 0
-  Range: 0
-  ShootIntervals: 0
-  Damage: 0
+  Range: 3
+  ShootIntervals: 1
+  Damage: 200
+  weaponParticleSystem: {fileID: 0}
+  hittingTargetParticleSystem: {fileID: 0}

@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4376935634624710048}
+  - component: {fileID: 2860903931559249244}
+  - component: {fileID: 6454156079235786531}
+  - component: {fileID: 2827097818962504918}
   m_Layer: 0
   m_Name: Rocket Tower
   m_TagString: Untagged
@@ -31,6 +34,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2860903931559249244
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250549500158780557}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6454156079235786531
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250549500158780557}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2827097818962504918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250549500158780557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3325d750bd18ac147b208d2bf5b9f558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerSetting: {fileID: 11400000, guid: 858df808f22e034459598c6b434b9ae3, type: 2}
+  weaponParticles: {fileID: 0}
+  hittingTargetParticles: {fileID: 0}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &8060363896358787167
 GameObject:
   m_ObjectHideFlags: 0
