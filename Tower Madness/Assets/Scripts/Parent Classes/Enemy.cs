@@ -38,8 +38,9 @@ public class Enemy : MonoBehaviour
         healthBar.fillAmount = (float) enemyProperties.Health / enemySettings.Health;
         if (enemyProperties.Health <= 0)
         {
-            GameManager.gameManager.globalCoins +=
-                Random.Range(enemyProperties.GoldLowRange, enemyProperties.GoldHighRange);
+            var amount = Random.Range(enemyProperties.GoldLowRange, enemyProperties.GoldHighRange);
+            GameManager.gameManager.SetGold(amount);
+                
             Destroy(gameObject);
             return true;
         }

@@ -16,5 +16,5 @@ MonoBehaviour:
   LaserTowerIcon: {fileID: 21300000, guid: 2d01d59d538e72a43a831ef1c822fc06, type: 3}
   FlameTowerIcon: {fileID: 21300000, guid: 277927ca3753d4a4a82a6913653c17b5, type: 3}
   RocketTowerIcon: {fileID: 21300000, guid: 295e89cc4baf1f4468c85632073e8a73, type: 3}
-  GoldIcon: {fileID: 0}
+  GoldIcon: {fileID: 21300000, guid: 328e2292f99204f4e9544686d4676824, type: 3}
   HealthIcon: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdedf0ef6abb30f488d7fb76f6686695, type: 3}
   m_Name: AA Gun Tower
   m_EditorClassIdentifier: 
-  Price: 100
+  Price: 300
   Range: 3.5
   ShootIntervals: 0.3
   Damage: 100

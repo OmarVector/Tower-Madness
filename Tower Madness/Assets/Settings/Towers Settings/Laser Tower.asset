@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdedf0ef6abb30f488d7fb76f6686695, type: 3}
   m_Name: Laser Tower
   m_EditorClassIdentifier: 
-  Price: 0
+  Price: 400
   Range: 3.5
   ShootIntervals: 0.2
-  Damage: 20
+  Damage: 50
   weaponParticleSystem: {fileID: 0}
   hittingTargetParticleSystem: {fileID: 0}

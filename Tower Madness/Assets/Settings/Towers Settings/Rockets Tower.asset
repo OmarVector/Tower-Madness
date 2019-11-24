@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdedf0ef6abb30f488d7fb76f6686695, type: 3}
   m_Name: Rockets Tower
   m_EditorClassIdentifier: 
-  Price: 0
+  Price: 500
   Range: 3
   ShootIntervals: 1
   Damage: 200

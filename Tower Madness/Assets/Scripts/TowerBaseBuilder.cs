@@ -32,9 +32,9 @@ public class TowerBaseBuilder : MonoBehaviour
 
     public void LoadBuildingCanvas()
     {
-        if(hasTower)
+        if (hasTower)
             return;
-        
+
         if (GameManager.gameManager.ActiveBaseBuilder != null)
         {
             GameManager.gameManager.ActiveBaseBuilder.CloseBuildingCanvas();
@@ -48,7 +48,7 @@ public class TowerBaseBuilder : MonoBehaviour
         }
 
         buildingCanvas.DOScale(1, 0.2f);
-        buildingCanvas.LookAt(mainCamera.transform);
+        //buildingCanvas.LookAt(mainCamera.transform);
 
 
         GameManager.gameManager.ActiveBaseBuilder = this;
@@ -59,14 +59,19 @@ public class TowerBaseBuilder : MonoBehaviour
         buildingCanvas.DOScale(0, 0.2f);
     }
 
+
     public void BuildAAGunTower()
     {
         var gm = GameManager.gameManager;
-        if (gm.AAGunTower.GetComponent<Tower>().towerProperties.Price < gm.globalCoins)
+        if (gm.AAGunSettings.Price < gm.globalCoins)
         {
-            Instantiate(gm.AAGunTower, transform.position, Quaternion.identity);
+            var tower = Instantiate(gm.AAGunTower, transform.position, Quaternion.identity);
+            
             gm.ActiveBaseBuilder = null;
+
+            gm.SetGold(-tower.GetComponent<Tower>().towerProperties.Price);
             CloseBuildingCanvas();
+
             hasTower = true;
             return;
         }
@@ -78,10 +83,12 @@ public class TowerBaseBuilder : MonoBehaviour
     public void BuildLaserTower()
     {
         var gm = GameManager.gameManager;
-        if (gm.LaserTower.GetComponent<Tower>().towerProperties.Price < gm.globalCoins)
+        if (gm.LaserSettings.Price < gm.globalCoins)
         {
-            Instantiate(gm.LaserTower, transform.position, Quaternion.identity);
+            var tower = Instantiate(gm.LaserTower, transform.position, Quaternion.identity);
             gm.ActiveBaseBuilder = null;
+
+            gm.SetGold(-tower.GetComponent<Tower>().towerProperties.Price);
             CloseBuildingCanvas();
             hasTower = true;
             return;
@@ -94,10 +101,11 @@ public class TowerBaseBuilder : MonoBehaviour
     public void BuildRocketTower()
     {
         var gm = GameManager.gameManager;
-        if (gm.RocketTower.GetComponent<Tower>().towerProperties.Price < gm.globalCoins)
+        if (gm.RocketSettings.Price < gm.globalCoins)
         {
-            Instantiate(gm.RocketTower, transform.position, Quaternion.identity);
+            var tower = Instantiate(gm.RocketTower, transform.position, Quaternion.identity);
             gm.ActiveBaseBuilder = null;
+            gm.SetGold(-tower.GetComponent<Tower>().towerProperties.Price);
             CloseBuildingCanvas();
             hasTower = true;
             return;

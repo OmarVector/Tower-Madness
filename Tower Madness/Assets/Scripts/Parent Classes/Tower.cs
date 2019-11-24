@@ -12,7 +12,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private ParticleSystem hittingTargetParticles;
 
     [Inject] private PlayerCastle playerCastle;
-    
+
     private bool isFiring;
 
 
@@ -34,11 +34,10 @@ public class Tower : MonoBehaviour
         towerProperties.FireRate = towerSetting.ShootIntervals;
         towerProperties.Damage = towerSetting.Damage;
 
-        // Loading custom particles from scriptable object, otherwise load the default for the current prefab.
-        if (towerSetting.weaponParticleSystem != null)
-            weaponParticles = towerSetting.weaponParticleSystem;
-        if (towerSetting.hittingTargetParticleSystem != null)
-            hittingTargetParticles = towerSetting.hittingTargetParticleSystem;
+        if (weaponParticles != null)
+            weaponParticles.Play();
+        if (hittingTargetParticles != null)
+            hittingTargetParticles.Play();
 
         GetComponent<SphereCollider>().radius = towerProperties.Range;
     }
@@ -69,7 +68,7 @@ public class Tower : MonoBehaviour
     public IEnumerator CheckEnemyInRange()
     {
         var castlePosition = GameManager.gameManager.PlayerCastle.gameObject.transform.position;
-        
+
         while (EnemiesInRange.Count > 0)
         {
             var distance = 1000;
@@ -109,8 +108,11 @@ public class Tower : MonoBehaviour
             yield return new WaitForSeconds(towerProperties.FireRate);
         }
 
-        weaponParticles.Stop();
-        hittingTargetParticles.Stop();
+        if (weaponParticles != null)
+            weaponParticles.Stop();
+        if (hittingTargetParticles != null)
+            hittingTargetParticles.Stop();
+        
         isFiring = false;
     }
 
