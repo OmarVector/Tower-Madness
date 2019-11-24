@@ -1,6 +1,5 @@
-﻿using System;
-using UnityEngine;
-using Zenject;
+﻿using UnityEngine;
+
 
 public class PlayerCastle : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class PlayerCastle : MonoBehaviour
     {
         //TODO
         Health -= 100;
-        Debug.Log(Health);
+       // Debug.Log(Health);
     }
 
  

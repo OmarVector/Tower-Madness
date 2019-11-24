@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Elite Enemy
   m_EditorClassIdentifier: 
   Health: 2000
-  Speed: 1
+  Speed: 0.5
   Damage: 200
-  GoldScore: 300
+  GoldLowRange: 50
+  GoldHighRange: 100

@@ -12,6 +12,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private ParticleSystem hittingTargetParticles;
 
     [Inject] private PlayerCastle playerCastle;
+    
     private bool isFiring;
 
 
@@ -67,6 +68,8 @@ public class Tower : MonoBehaviour
 
     public IEnumerator CheckEnemyInRange()
     {
+        var castlePosition = GameManager.gameManager.PlayerCastle.gameObject.transform.position;
+        
         while (EnemiesInRange.Count > 0)
         {
             var distance = 1000;
@@ -79,7 +82,7 @@ public class Tower : MonoBehaviour
                     continue;
                 }
 
-                var x = (int) Vector3.Distance(playerCastle.transform.position, EnemiesInRange[i].transform.position);
+                var x = (int) Vector3.Distance(castlePosition, EnemiesInRange[i].transform.position);
                 if (distance > x)
                 {
                     distance = x;

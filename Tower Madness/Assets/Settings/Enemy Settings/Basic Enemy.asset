@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c532a8b06ff7347afa60efb9f13a01, type: 3}
   m_Name: Basic Enemy
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 500
   Speed: 2
   Damage: 50
-  GoldScore: 10
+  GoldLowRange: 10
+  GoldHighRange: 50
