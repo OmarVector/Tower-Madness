@@ -15,6 +15,6 @@ MonoBehaviour:
   Price: 0
   Range: 3.5
   ShootIntervals: 0.2
-  Damage: 10
+  Damage: 20
   weaponParticleSystem: {fileID: 0}
   hittingTargetParticleSystem: {fileID: 0}
