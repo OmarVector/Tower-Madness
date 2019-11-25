@@ -4,27 +4,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
+/// <summary>
+/// This class managing enemies .
+/// </summary>
 public class EnemyManager : MonoBehaviour
 {
-    [Header("Enemies GameObject")] [SerializeField]
+    [Header("Enemies GameObject")] 
+    [Tooltip("Basic Enemy prefab")] 
+    [SerializeField]
     private GameObject basicEnemy;
+    
+    [Tooltip("Elite Enemy prefab")]
+    [SerializeField] 
+    private GameObject eliteEnemy;
 
-    [SerializeField] private GameObject eliteEnemy;
-    [SerializeField] private GameObject bossEnemy;
+    [Tooltip("Boss Enemy prefab")] 
+    [SerializeField]
+    private GameObject bossEnemy;
 
     private List<GameObject> BasicEnemyList = new List<GameObject>();
     private List<GameObject> EliteEnemyList = new List<GameObject>();
     private List<GameObject> BossEnemyList = new List<GameObject>();
 
-    [Header("Enemies memory pool size")] [Tooltip("Basic Enemy pool size")]
+    [Header("Enemies memory pool size")] 
+    
+    [Tooltip("Basic enemies pool size")]
     public int BasicEnemySize;
-
+    
+    [Tooltip("Elite enemies pool size")]
     public int EliteEnemySize;
+    
+    [Tooltip("Boss enemies pool size")]
     public int BossEnemySize;
 
     public float spaceBetweenEachEnemy;
 
+    // Hard coding first wave enemies size //TODO 
     private void Awake()
     {
         BasicEnemySize = GameManager.gameManager.EnemyWaveSettings.EnemyWaves[0].BasicEnemyCount;
@@ -32,6 +47,7 @@ public class EnemyManager : MonoBehaviour
         BossEnemySize = GameManager.gameManager.EnemyWaveSettings.EnemyWaves[0].BossEnemyCount;
     }
 
+    // Initializing Enemies Pool
     private void InitializeEnemyPool()
     {
         var BasicEnemyGrp = new GameObject("Basic Enemy Grp");
@@ -67,7 +83,8 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    public void StartWave(int basicEnemyCount, int eliteEnemyCount, int bossEnemyCount, float basicEnemyInterval,
+    // Starting wave //TODO
+    private void StartWave(int basicEnemyCount, int eliteEnemyCount, int bossEnemyCount, float basicEnemyInterval,
         float eliteEnemyInterval, float bossEnemyInterval)
     {
         StartCoroutine(CallBasicEnemy(basicEnemyCount, basicEnemyInterval));
@@ -75,6 +92,7 @@ public class EnemyManager : MonoBehaviour
         StartCoroutine(CallBossEnemy(bossEnemyCount, bossEnemyInterval));
     }
 
+    // Basic Enemy wave start
     private IEnumerator CallBasicEnemy(int count, float interval)
     {
         var dest = GameManager.gameManager.PlayerCastle.gameObject.transform.position;
@@ -89,6 +107,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // Elite Enemy wave start
     private IEnumerator CallEliteEnemy(int count, float interval)
     {
         var dest = GameManager.gameManager.PlayerCastle.gameObject.transform.position;
@@ -103,6 +122,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    // Boss Enemy wave start
     private IEnumerator CallBossEnemy(int count, float interval)
     {
         var dest = GameManager.gameManager.PlayerCastle.gameObject.transform.position;
@@ -122,11 +142,13 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         InitializeEnemyPool();
+        //TODO, adding interval for each enemy type
         StartWave(BasicEnemySize, EliteEnemySize, BossEnemySize, spaceBetweenEachEnemy,
             spaceBetweenEachEnemy, spaceBetweenEachEnemy);
         //StartCoroutine(EnableEnemy());
     }
 
+    // Dupricated
     private IEnumerator EnableEnemy()
     {
         var dest = GameManager.gameManager.PlayerCastle.gameObject.transform.position;
