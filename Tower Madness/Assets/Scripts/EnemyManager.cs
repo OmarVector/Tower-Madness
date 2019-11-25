@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Zenject;
+
 
 public class EnemyManager : MonoBehaviour
 {
@@ -25,8 +25,14 @@ public class EnemyManager : MonoBehaviour
 
     public float spaceBetweenEachEnemy;
 
+    private void Awake()
+    {
+        BasicEnemySize = GameManager.gameManager.EnemyWaveSettings.EnemyWaves[0].BasicEnemyCount;
+        EliteEnemySize = GameManager.gameManager.EnemyWaveSettings.EnemyWaves[0].EliteEnemyCount;
+        BossEnemySize = GameManager.gameManager.EnemyWaveSettings.EnemyWaves[0].BossEnemyCount;
+    }
 
-    public void InitializeEnemyPool()
+    private void InitializeEnemyPool()
     {
         var BasicEnemyGrp = new GameObject("Basic Enemy Grp");
         var EliteEnemyGrp = new GameObject("Elite Enemy Grp");
@@ -60,27 +66,22 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-       // InitializeEnemyPool();
-    }
-    
-   
 
-    public void StartWave(int basicEnemyCount, int eliteEnemyCount, int bossEnemyCount ,float basicEnemyInterval, float eliteEnemyInterval, float bossEnemyInterval)
+    public void StartWave(int basicEnemyCount, int eliteEnemyCount, int bossEnemyCount, float basicEnemyInterval,
+        float eliteEnemyInterval, float bossEnemyInterval)
     {
-        StartCoroutine(CallBasicEnemy(basicEnemyCount,basicEnemyInterval));
+        StartCoroutine(CallBasicEnemy(basicEnemyCount, basicEnemyInterval));
         StartCoroutine(CallEliteEnemy(eliteEnemyCount, eliteEnemyInterval));
-        StartCoroutine(CallBasicEnemy(bossEnemyCount,eliteEnemyInterval));
+        StartCoroutine(CallBossEnemy(bossEnemyCount, bossEnemyInterval));
     }
 
     private IEnumerator CallBasicEnemy(int count, float interval)
     {
         var dest = GameManager.gameManager.PlayerCastle.gameObject.transform.position;
-        
-        if(count > BasicEnemySize)
+
+        if (count > BasicEnemySize)
             throw new Exception("Enemy count is higher than the pool size");
-        
+
         for (int i = 0; i < count; ++i)
         {
             BasicEnemyList[i].GetComponent<NavMeshAgent>().SetDestination(dest);
@@ -88,13 +89,13 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private IEnumerator CallEliteEnemy(int count,float interval)
+    private IEnumerator CallEliteEnemy(int count, float interval)
     {
         var dest = GameManager.gameManager.PlayerCastle.gameObject.transform.position;
-        
-        if(count > BasicEnemySize)
+
+        if (count > BasicEnemySize)
             throw new Exception("Enemy count is higher than the pool size");
-        
+
         for (int i = 0; i < count; ++i)
         {
             EliteEnemyList[i].GetComponent<NavMeshAgent>().SetDestination(dest);
@@ -102,28 +103,28 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private IEnumerator CallBossEnemy(int count,float interval)
+    private IEnumerator CallBossEnemy(int count, float interval)
     {
         var dest = GameManager.gameManager.PlayerCastle.gameObject.transform.position;
-        
-        if(count > BasicEnemySize)
+
+        if (count > BasicEnemySize)
             throw new Exception("Enemy count is higher than the pool size");
-        
+
         for (int i = 0; i < count; ++i)
         {
             BossEnemyList[i].GetComponent<NavMeshAgent>().SetDestination(dest);
             yield return new WaitForSeconds(interval);
         }
     }
-   
-    
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
         InitializeEnemyPool();
-        StartCoroutine(EnableEnemy());
-        
+        StartWave(BasicEnemySize, EliteEnemySize, BossEnemySize, spaceBetweenEachEnemy,
+            spaceBetweenEachEnemy, spaceBetweenEachEnemy);
+        //StartCoroutine(EnableEnemy());
     }
 
     private IEnumerator EnableEnemy()

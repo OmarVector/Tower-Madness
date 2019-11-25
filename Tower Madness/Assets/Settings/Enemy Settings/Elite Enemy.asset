@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 2000
   Speed: 0.5
-  Damage: 200
+  Damage: 100
   GoldLowRange: 50
   GoldHighRange: 100

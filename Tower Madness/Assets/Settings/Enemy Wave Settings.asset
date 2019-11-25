@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyWaves:
   - BasicEnemyCount: 100
-    EliteEnemyCount: 10
-    BossEnemyCount: 1
+    EliteEnemyCount: 20
+    BossEnemyCount: 10
     WaveTimeLength: 60
   - BasicEnemyCount: 200
     EliteEnemyCount: 20

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c532a8b06ff7347afa60efb9f13a01, type: 3}
   m_Name: Boss Enemy
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 5000
   Speed: 0.3
-  Damage: 50
+  Damage: 200
   GoldLowRange: 100
   GoldHighRange: 500

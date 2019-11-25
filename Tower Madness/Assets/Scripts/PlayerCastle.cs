@@ -4,27 +4,26 @@
 public class PlayerCastle : MonoBehaviour
 {
     [SerializeField] private PlayerCastleScriptableObject playerSettings;
-  
-    [HideInInspector] public int Health;
+
+    [HideInInspector] public float Health;
     [HideInInspector] public int StartedCoins;
 
     void InitializeSettings()
     {
-        Health = playerSettings.Health;
-        StartedCoins = playerSettings.StartingCoins;
+        Health = GameManager.gameManager.playerSettings.Health;
+        StartedCoins = GameManager.gameManager.PlayerCastle.StartedCoins;
     }
-    
+
     private void Awake()
     {
-       InitializeSettings();
+        InitializeSettings();
     }
 
     private void OnTriggerEnter(Collider enemy)
     {
         //TODO
-        Health -= 100;
-       // Debug.Log(Health);
+        Health -= enemy.gameObject.GetComponent<Enemy>().enemyProperties.Damage;
+        GameManager.gameManager.SetHealth(Health);
+        // Debug.Log(Health);
     }
-
- 
 }
