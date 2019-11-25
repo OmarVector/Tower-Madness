@@ -49,6 +49,7 @@ public class Tower : MonoBehaviour
             hittingTargetParticles.Play();
 
         GetComponent<SphereCollider>().radius = towerProperties.Range;
+        SetTowerToIdle();
     }
 
     public virtual void Awake()
