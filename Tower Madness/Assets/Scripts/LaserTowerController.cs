@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LaserTowerController : Tower
 {
+    [Tooltip("LineRender for laser effect")]
     [SerializeField] private LineRenderer lineRender;
 
     public override void Awake()
@@ -14,14 +14,10 @@ public class LaserTowerController : Tower
 
     protected override bool HitEnemy(Transform target)
     {
-        Debug.Log(lineRender.positionCount);
-        
         lineRender.SetPosition(1, target.transform.localPosition);
         lineRender.enabled = true;
         
-        Invoke(nameof(EnableLineRender), 0.05f);
-
-        Debug.Log(towerProperties.Damage);
+        Invoke(nameof(EnableLineRender), 0.05f); // for laser fire effect, I found 0.5 is best value, hard coded for testing purpose
        
         return target.GetComponent<Enemy>().HitByTower(towerProperties.Damage);
     }

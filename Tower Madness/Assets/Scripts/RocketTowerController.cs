@@ -2,12 +2,13 @@
 
 public class RocketTowerController : Tower
 {
-    [SerializeField] private LayerMask enemyLayerMask;
-    
+    [Tooltip("Detection layer mask for sphere cast that fire to do area damage")] [SerializeField]
+    private LayerMask enemyLayerMask;
+
     protected override bool HitEnemy(Transform target)
     {
-        RaycastHit[] raycastHits = Physics.SphereCastAll(target.position, 2f, Vector3.forward,20,enemyLayerMask);
-       
+        var raycastHits = Physics.SphereCastAll(target.position, 2f, Vector3.forward, 20, enemyLayerMask);
+
         if (raycastHits.Length > 1)
         {
             for (int i = 1; i < raycastHits.Length; ++i)
