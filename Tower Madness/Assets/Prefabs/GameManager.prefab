@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 898049318330581051}
   - component: {fileID: 898049318330581050}
-  m_Layer: 0
+  - component: {fileID: 1245705332}
+  m_Layer: 8
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,9 +44,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471b661e80bf5a94abdf47d34628fca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AAGunTower: {fileID: 0}
-  RocketTower: {fileID: 0}
-  LaserTower: {fileID: 0}
+  scoreText: {fileID: 0}
+  healthText: {fileID: 0}
+  AAGunTower: {fileID: 7560882057684040254, guid: fc93bb3e562217a4eacd14a50a659055,
+    type: 3}
+  RocketTower: {fileID: 2250549500158780557, guid: b12056d7c9233ca46a6673c5830a0ef3,
+    type: 3}
+  LaserTower: {fileID: 7571747265518707594, guid: 12b9f72c6c1d7ee4db3712e50883295b,
+    type: 3}
+  AAGunSettings: {fileID: 11400000, guid: 54b1c73de6a6cdc4a888eaca258539af, type: 2}
+  RocketSettings: {fileID: 11400000, guid: 858df808f22e034459598c6b434b9ae3, type: 2}
+  LaserSettings: {fileID: 11400000, guid: 35bffaa2b26f7e343a9f2dff9ccbd532, type: 2}
+  EnemyWaveSettings: {fileID: 11400000, guid: d64044c1c45c78c4a99d233d1b25648b, type: 2}
+  playerSettings: {fileID: 11400000, guid: 35f09ffd963609040a31c1625ea23665, type: 2}
+  PlayerCastle: {fileID: 0}
   globalCoins: 1000
   WaveLength: 60
-  WaveEnemyCount: 100
+  ActiveBaseBuilder: {fileID: 0}
+  UiIcon: {fileID: 11400000, guid: 2b39c58ad75b51049b5ce21040c3f420, type: 2}
+--- !u!114 &1245705332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898049318330581049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1af88f4850cc384bbc249ce7e1b27a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
